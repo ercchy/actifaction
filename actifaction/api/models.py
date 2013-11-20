@@ -7,3 +7,6 @@ class Action(models.Model):
 	description = models.TextField(max_length=255)
 	action_date = models.DateTimeField()
 	action_type = models.IntegerField()
+
+	def __unicode__ (self):
+		return '%s' % (self.title)
