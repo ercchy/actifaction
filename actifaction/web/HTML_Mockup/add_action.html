@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<body>
 <head> 
 	<option value="http://actifaction.si/events">Events</option>
 	<option value="http://actifaction.si/main_page">Dashboard</option>
@@ -27,7 +30,11 @@
 	<form>
 		Ime dogodka: <input type="text" name="event_name" placeholder="Ime tvojega dogodka"><br>
 		Kraj: <input type="text" name="location" placeholder="Kje bo dogodek"><br>
-		Čas: <input type="datetime" name="time"><br>
+
+		<form action="demo_form.asp">
+		Čas: <input type="date" value="yyyy-mm-dd" class="input-medium search-query"><br>
+		</form>
+
 		Tip: <form action=""><br>
 			<select type="tip">
 				<option value="Šport">Šport</option>
@@ -35,9 +42,14 @@
 				<option value="Hobi">Hobi</option>
 			</select>
 			</form>
-		Max. število udeležencev: <input type="number" name="max_attendees"<br>
-		Opis: <textarea rows="10" cols="30" name="desc">
+		Max. število udeležencev: <input type="number" name="max_attendees"><br>
+		Opis: 
+		<br><textarea rows="10" cols="30" name="desc" placeholder="Dodaj več informacij"></textarea>
+		<br>
+	</form>
 
-		<form action ="input" action="html_form_action.asp" method="post">
-<input type="submit" value="Submit"> + pošlji v bazo?
-</form> 
+<form action ="input" action="html_form_action.asp" method="post">
+<input type="submit" value="Objavi">
+
+</body>
+</html>
