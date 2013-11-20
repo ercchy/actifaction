@@ -5,4 +5,4 @@ import models
 
 
 
-
+admin.site.register(models.Action)
