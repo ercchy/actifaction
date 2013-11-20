@@ -1,9 +1,150 @@
 <!DOCTYPE html>
-<h1> <img src="{{ user.name }}" alt=" {{user.name}} " width="32" height="32"> {{user.name}} </h1>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-<form action="http://actifaction.si/action">
-    <input type="submit" value="Dodaj akcijo">
-</form>
+    <title>Static Top Navbar Example for Bootstrap</title>
 
-<h2> Moje akcije: {{akcija.moja_akcija}} (url izberi iz akcij? ali foreign keys?)
-	 Udeležila: {{akcija.attended}}
+    <!-- Bootstrap core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body style="">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Actifaction</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#Events">Events</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage account <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">My profile</a></li>
+                <li><a href="#">My events</a></li>
+                <li class="divider"></li>
+                <!-- <li class="dropdown-header">Nav header</li>-->   
+                <li><a href="#">Logout</a></li>
+           	</ul>
+           </li>
+           
+           </ul>
+			<ul class="nav navbar-nav navbar-right">
+          	<li> <a href="#" class="btn btn-default">Dodaj dogodek</a>
+          	</li>
+          </ul>
+          
+           <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+
+          
+            
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+   		<div class="media">
+  		<a class="pull-left" href="#">
+    		<img class="media-object" src="..." alt="...">
+  			</a>
+  			<div class="media-body">
+    		<h2 class="media-heading">Name Surname</h2>
+  			</div>
+		</div>
+		
+        <p>Bio je lahko malo daljši ali kot seznam?</p>
+     
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+<div class="container">
+<ul class="nav nav-justified">
+          <li class="active"><a href="#">Your Events</a></li>
+          <li><a href="#">You're attending</a></li>
+          <li><a href="#">Past Events</a></li>
+        </ul>
+</div>
+<div class="container">
+<div class="row">
+        <div class="col-lg-4">
+          <h2>Prvi dogodek</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-lg-4">
+          <h2>Drugi dogodek</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+       </div>
+        <div class="col-lg-4">
+          <h2>Tretji dogodek</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+        </div>
+        </div>
+      </div>
+
+     <br>
+     <br>
+     <br>
+
+     
+<div class="container">
+<div class="footer">
+	<p> @ Codecatz 2013</p>
+</div>
+</div>
+</body>
+</html>
+
+
+
