@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
-def main_page(request):
+def index(request):
 	return render_to_response('pages/index.html')
 
 def login(request):
@@ -10,7 +10,7 @@ def login(request):
 def logout(request):
     pass
 
-def add_action(request):  ##create/edit action
+def create_action(request):  ##create/edit action
     pass
 
 def edit_action(request): #edit existing action
