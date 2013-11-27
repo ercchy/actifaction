@@ -5,7 +5,10 @@ def main_page(request):
 	return render_to_response('pages/index.html')
 
 def index(request):
-    context = {'test': 'value'}
+    context = {
+        'test': 'value',
+        'kdojecar': 'hana'
+    }
     return render_to_response(
         'pages/index.html',
         context,
