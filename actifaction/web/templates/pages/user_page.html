@@ -1,9 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 
-</body>
-</html>
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+   		<div class="media">
+  		<a class="pull-left" href="#">
+        <img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 100px; height: 100px;"></img>
+  			</a>
+  			<div class="media-body">
+    		<h2 class="media-heading">Ime Priimek {{ user.name }}</h2>
+  			</div>
+        <p>Bio je lahko malo daljši ali kot seznam?</p>
+		</div>
+		
+        
+     
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+<div class="container">
+<ul class="nav nav-justified">
+          <li class="active"><a href="#">Moji dogodki</a></li>
+          <li><a href="#">Udeležiš se</a></li>
+          <li><a href="#">Pretekli dogodki</a></li>
+        </ul>
+</div>
+<div class="container">
+  
+{% endblock %}
