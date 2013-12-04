@@ -1,8 +1,9 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.template import Context, loader, RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
+from api.models import ActionForm
 
 
 def main_page(request):
@@ -42,7 +43,13 @@ def logout(request):
 
 
 def add_action(request):  ##create/edit action
-	pass
+   # if request.user.is_authenticated():
+        actionform = ActionForm()
+        context = {"actionform" : actionform}
+        return render_to_response("pages/create_action.html", context,context_instance=RequestContext(request))
+
+    #else:
+     #   return redirect("/login")
 
 
 def edit_action(request): #edit existing action
