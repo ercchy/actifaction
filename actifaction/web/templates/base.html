@@ -42,7 +42,11 @@
 						<li><a href="{% url 'web.user_page' 1 %}">Moj profil</a></li>
 						<li class="divider"></li>
 						<!-- <li class="dropdown-header">Nav header</li>-->
-						<li><a href="#">Odjava</a></li>
+						{% if user.is_authenticated %}
+                            <li><a href="/accounts/logout">Odjava</a></li>
+                        {% else %}
+                        <li><a href="/accounts/login">Prijava</a></li>
+                        {% endif %}
 					</ul>
 				</li>
 
