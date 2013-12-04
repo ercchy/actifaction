@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+admin.autodiscover()
 
 from actifaction import settings
 
@@ -14,4 +15,11 @@ urlpatterns = patterns('',
 
 	# STATIC CONTENT
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+
 )
+
+urlpatterns += patterns('',
+	url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page' : '/accounts/login'})
+)
+
