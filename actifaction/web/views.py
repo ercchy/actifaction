@@ -1,5 +1,6 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
+from api.models import ActionForm
 
 def main_page(request):
 	return render_to_response('pages/index.html')
@@ -21,7 +22,14 @@ def logout(request):
 
 
 def add_action(request):  ##create/edit action
-    pass
+
+   # if request.user.is_authenticated():
+        actionform = ActionForm()
+        context = {"actionform" : actionform}
+        return render_to_response("pages/create_action.html", context,context_instance=RequestContext(request))
+
+    #else:
+     #   return redirect("/login")
 
 
 def edit_action(request): #edit existing action

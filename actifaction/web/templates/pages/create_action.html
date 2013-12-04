@@ -1,9 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+<h1> Tukaj dodaj novo akcijo: </h1>
 
-</body>
-</html>
+<h2>
+	<form role = "form" method="POST" action= ".">{% csrf_token %}
+        {% for field in actionform %}
+       <div class="form-group">
+        {{field.label_tag}}
+        {{ field }}
+       </div>
+        {% endfor %}
+        <button type="submit" class = "btn btn-default"> Dodaj akcijo </button>
+	</form>
+
+{% endblock %}
