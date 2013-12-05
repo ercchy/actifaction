@@ -1,45 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-
-	<div class="container">
+<div class="container">
 	<h1> Tukaj dodaj novo akcijo </h1>
   <br>
   <div class="row">
     <div class="col-sm-8">
-	<p>
-	<form>
-		<b>Ime dogodka: </b> <input type="text" name="event_name" placeholder="Ime tvojega dogodka"><br>
-		<b>Kraj:</b> <input type="text" name="location" placeholder="Kje bo dogodek"><br>
-
-		<form action="demo_form.asp">
-		<b>Čas:</b> <input type="date" value="yyyy-mm-dd" class="input-medium search-query"><br>
-		</form>
-    <form action=""><b>Tip:</b> <select type="tip">
-				<option value="Social">Social</option>
-				<option value="Mesto">Mesto</option>
-				<option value="Hobi">Hobi</option>
-			</select>
-			</form>
-		<b>Max. število udeležencev:</b> <input type="number" name="max_attendees"><br>
-		<b>Opis:</b> 
-		<br><textarea rows="10" cols="50" name="desc" placeholder="Dodaj več informacij"></textarea>
-		<br>
-	</form>
-  <br>
-  <form action ="input" action="html_form_action.asp" method="post"><button class="btn btn-default" type="button"> Objavi </button>
-  </div>
-
-  <div class="col-sm-3">
-    <b>Organizator:</b>
-      <br>
-      <a class="organizer" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
-      <br>
-      <br>
-    <b>Dodaj drugega organizatorja:</b>
-    <br><input type="text" name="organizer" placeholder="Dodaj organizatorja">
-  </div>
-  </p>
+      <form role = "form" method="POST" action= ".">{% csrf_token %}
+              {% for field in actionform %}
+             <div class="form-group">
+              {{field.label_tag}}
+              {{ field }}
+             </div>
+              {% endfor %}
+              <button type="submit" class = "btn btn-default"> Dodaj akcijo </button>
+      </form>
   </div>
 </div>
-
 {% endblock %}
