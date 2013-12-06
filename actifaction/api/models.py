@@ -1,7 +1,6 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.models import User
-from django.utils.html import strip_tags
 
 class ActionCategory(models.Model):
 	name = models.CharField(max_length=255) #we don't want to limit ourselves here, we'll rather do this in GUI
@@ -24,24 +23,5 @@ class Action(models.Model):
 
 	def __unicode__ (self):
 		return '%s' % (self.title)
-
-
-class ActionForm(forms.ModelForm):
-	title = forms.CharField(required=True, label='Naslov akcije', widget=forms.widgets.TextInput())
-	location = forms.CharField(required=True, label='Lokacija', widget=forms.widgets.TextInput())
-	action_date = forms.CharField(required=True, label='Naslov akcije', widget=forms.widgets.TextInput())
-
-
-	class Meta:
-		model = Action
-		fields = ["title","location","action_date","action_type","max_people","description"]
-
-	def is_valid(self):
-		form = super(ActionForm, self).is_valid()
-		for f,error in self.errors.iterkeys():
-			if f != '__all__':
-				error=strip_tags(str(error))
-				self.fields[f].widget.attrs.update({'class': 'error', 'value': error})
-		return form
 
 

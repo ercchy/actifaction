@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import Context, loader, RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from api.models import ActionForm
+from web.forms import action_forms
 
 
 def main_page(request):
