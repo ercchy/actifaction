@@ -1,6 +1,4 @@
 from django.db import models
-from django import forms
-from django.contrib.auth.models import User
 
 class ActionCategory(models.Model):
 	name = models.CharField(max_length=255) #we don't want to limit ourselves here, we'll rather do this in GUI
