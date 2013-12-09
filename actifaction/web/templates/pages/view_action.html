@@ -2,45 +2,46 @@
 {% block content %}
 
 <div class="container">
-	<h1>Ime dogodka {{ Action.title }}</h1>
+	<h1>{{ action.title }}</h1>
 
   <div class="row">
-    <div class="col-sm-8">
-	   <p> <b>Opis:</b> {{ Action.description }} Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. 
-    </div>
-    
-    <div class="col-sm-2">
-      <b>Čas:</b> {{ Action.action_date }} <br>
-      <b>Kraj:</b> {{ Action.location }}<br>
-      <br>
-    </div>
-    <br>
-    <br>
     <div class="col-sm-6">
-      <b>Tip:</b> {{ Action.action_type }}
+	   <p> <b>Opis:</b> {{ action.description }}</p>
     </div>
-    
-    <div class="col-sm-4">
-      <form action ="input" action="join_action.asp" method="post"><button class="btn btn-default" type="button"> Prijavi se </button>
+    </div>
+    <div class="row">
+    <div class="col-sm-6">
+      <b>Čas:</b> {{ action.action_date }} <br>
+      <b>Kraj:</b> {{ action.location }}<br>
+    </div>
+</div>
+  <div class="row">
+    <div class="col-sm-6">
+      <b>Tip:</b> {{ action.action_type }}
+    </div>
+</div>
+    <div class="row">
+    <div class="col-sm-6">
+      <form action ="input" action="#" method="post"><button class="btn btn-default" type="button"> Prijavi se </button></form>
+    </div>
     </div>
 
-      <br>
-      <br>
-      <br>
-
+      <div class="row" style="margin-top: 30px;">
     <div class="col-sm-4">
       <b>Organizator:</b>
       <br>
-      <a class="organizer" href="url(r'^user/(?P<user_id>\d+)/$', 'user_page', name='web.user_page')"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+      <a class="organizer" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
     </div>
     
     <div class="col-sm-6">
       <b>Udeleženci:</b>
       <br>
-      <a class="attendees" href="url(r'^user/(?P<user_id>\d+)/$', 'user_page', name='web.user_page')"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+      <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
     </div>
-  <br>
-	</p>
   </div>
 </div>
 

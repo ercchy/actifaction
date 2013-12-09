@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from web.forms.login_form import LoginForm
 admin.autodiscover()
 
 from django.conf import settings
@@ -11,7 +12,7 @@ urlpatterns = patterns('',
 	(r'', include('web.urls')),
 
 	# ADMIN
-    url(r'^admin/', include(admin.site.urls)),
+	url(r'^admin/', include(admin.site.urls)),
 
 	# STATIC CONTENT
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
@@ -19,7 +20,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-	url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page' : '/accounts/login'})
+	url(r'^accounts/login/$', 'django.contrib.auth.views.login',{'template_name':'registration/login.html', 'authentication_form':LoginForm}),
+	url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page' : '/accounts/login'})
 )
 
