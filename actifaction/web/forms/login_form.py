@@ -8,19 +8,17 @@ class LoginForm(AuthenticationForm):
 	def __init__(self, *args, **kwargs):
 		super(LoginForm, self).__init__(*args, **kwargs)
 
-		layout = Layout(
-			Fieldset(_('Prijava'),
-			         'username',
-			         'password',
-			         ),
-			ButtonHolder(
-				Submit('submit', _('Prijava'), css_class='btn btn-lg btn-primary btn-block'),
-			),
-		)
-
 		self.helper = FormHelper()
 		self.helper.form_method = 'POST'
 		self.helper.form_tag = True
 		self.helper.form_class = 'form-signin'
-		self.helper.add_layout(layout)
+		self.helper.add_layout(Layout(
+			Fieldset(_('Prijava'),
+			         'username',
+			         'password',
+			),
+			ButtonHolder(
+				Submit('submit', _('Prijava'), css_class='btn btn-lg btn-primary btn-block'),
+			),
+		))
 
