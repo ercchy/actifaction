@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+	<link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
+	<link rel="icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
 
 	<title>Actifaction</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/media/css/actifaction.css" rel="stylesheet">
+	<link href="{% static "css/actifaction.css"  %}" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -33,23 +35,23 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{% url 'web.index' %}">Actifaction</a>
+			<a class="navbar-brand" href="{% url "web.index" %}">Actifaction</a>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-                <li><a href="/actions/">Aktivnosti</a></li>
+				<li><a href="{% url "web.view_all_actions" %}">Aktivnosti</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Upravljaj račun<b class="caret"></b></a>
+					{% if user.is_authenticated %}
 					<ul class="dropdown-menu">
 						<li><a href="{% url 'web.user_page' 1 %}">Moj profil</a></li>
 						<li class="divider"></li>
-						<!-- <li class="dropdown-header">Nav header</li>-->
-						{% if user.is_authenticated %}
-                            <li><a href="/accounts/logout">Odjava</a></li>
-                        {% else %}
-                        <li><a href="/accounts/login">Prijava</a></li>
-                        {% endif %}
+						<li><a href="{% url "" %}">Odjava</a></li>
+
 					</ul>
+					{% else %}
+						<li><a href="/accounts/login">Prijava</a></li>
+						{% endif %}
 				</li>
 
 			</ul>
@@ -77,11 +79,11 @@
 	{% block content %}{% endblock %}
 
 </div>
-<div class="container">
-	<div class="footer">
-		<p> @ Codecatz 2013</p>
+<footer>
+	<div class="container">
+		© CodeCatz
 	</div>
-</div>
+</footer>
 <!-- /container -->
 
 

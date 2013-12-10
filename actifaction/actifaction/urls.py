@@ -15,12 +15,16 @@ urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 
 	# STATIC CONTENT
-	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+	url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 
 )
 
-urlpatterns += patterns('',
-	url(r'^accounts/login/$', 'django.contrib.auth.views.login',{'template_name':'registration/login.html', 'authentication_form':LoginForm}),
-	url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page' : '/accounts/login'})
+urlpatterns += patterns(
+	'',
+	url(r'^accounts/login/$', 'django.contrib.auth.views.login',
+	    {'template_name': 'registration/login.html', 'authentication_form': LoginForm},
+	    name='login'),
+	url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',
+	    {'next_page': '/accounts/login'}, name='logout')
 )
 
