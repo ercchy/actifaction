@@ -3,19 +3,14 @@
 {% load static %}
 
 {% block custom_css %}
-		<link rel="stylesheet" href="{% static "css/signin.css" %}" />
-	{% endblock custom_css %}
+	<link rel="stylesheet" href="{% static "css/signin.css" %}" />
+{% endblock custom_css %}
 
 {% block content %}
 	<div class="container">
-
-	{% if form.errors %}
-		<div class="alert alert-error">Your username and password didn't match. Please try again.</p>
-	{% endif %}
-
-<form class="form-signin" role="form" method="post" action="{% url "django.contrib.auth.views.login" %}">
-	<h1>Prijava</h1>
-	{% crispy form %}
-</form>
-</div>
+		<form class="form-signin" role="form" method="post" action="{% url "django.contrib.auth.views.login" %}">
+			<h1>Prijava</h1>
+			{% crispy form %}
+		</form>
+	</div>
 {% endblock %}
