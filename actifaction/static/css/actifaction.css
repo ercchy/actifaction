@@ -8,6 +8,9 @@ i {
     padding: 0 5px;
 }
 
+.navbar-nav>li>a.user-avatar{
+    padding: 10px;
+}
 #main-content {
     padding-top: 40px;
 }

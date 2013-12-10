@@ -68,6 +68,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 )
@@ -92,13 +93,19 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'debug_toolbar',
     'web',
     'api',
     'crispy_forms',
 )
 
 #############################################################################
-# Logging settings - TODO(improve logging settings)
+# Django debug toolbar settings
+#############################################################################
+INTERNAL_IPS = ('127.0.0.1',)
+
+#############################################################################
+# Logging settings
 #############################################################################
 LOGGING = {
     'version': 1,
