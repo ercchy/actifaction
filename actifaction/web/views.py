@@ -1,11 +1,9 @@
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.template import Context, loader, RequestContext
-from django.shortcuts import render_to_response, redirect, get_object_or_404, render
+from django.template import RequestContext
+from django.shortcuts import render_to_response, get_object_or_404, render
 from api. models import Action
 from web.forms.action_forms import ActionForm
-from django.http import Http404
 
 
 def main_page(request):
@@ -64,7 +62,7 @@ def user_page(request, user):
 	return render(request, 'pages/user_page.html', {'user': user_profile})
 
 
-def join_action(request): #join event
+def join_action(request):
 	pass
 
 
