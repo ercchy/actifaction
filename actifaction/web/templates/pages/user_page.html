@@ -10,7 +10,7 @@
         <img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 100px; height: 100px;"></img>
   			</a>
   			<div class="media-body">
-    		<h2 class="media-heading">Ime Priimek {{ user.name }}</h2>
+    		<h2 class="media-heading">{% if user.first_name or user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else%} &lt;no name&gt; {% endif %}</h2>
   			</div>
         <p>Bio je lahko malo daljši ali kot seznam?</p>
 		</div>
@@ -22,11 +22,7 @@
     </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
 
 <div class="container">
 <ul class="nav nav-justified">
