@@ -11,6 +11,7 @@ from django.http import Http404
 def main_page(request):
 	return render_to_response('pages/index.html')
 
+
 def index(request):
 	context = {
 		'test': 'value',
@@ -35,27 +36,25 @@ def view_all_actions(request):
 	context = {'actions': all_actions}
 	return render_to_response("pages/action_index.html", context, context_instance=RequestContext(request))
 
+
 @login_required
-def add_action(request):  #create action
-   # if request.user.is_authenticated():
+def add_action(request):
 		action_form = ActionForm()
-		context = {"form" : action_form}
+		context = {"form": action_form}
 		return render_to_response("pages/create_action.html", context, context_instance=RequestContext(request))
 
-	#else:
-	 #   return redirect("/login")
 
-def view_action(request, action_id): #
+def view_action(request, action_id):
 	action = get_object_or_404(Action, pk=action_id)
 	context = {'action': action}
 	return render_to_response("pages/view_action.html", context, context_instance=RequestContext(request))
 
 
-def edit_action(request): #edit existing action
+def edit_action(request):
 	pass
 
 
-def submit_action(request): #submit new action
+def submit_action(request):
 	pass
 
 
