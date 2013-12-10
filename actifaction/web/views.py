@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404, render
+from django.shortcuts import render_to_response
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from api. models import Action
 from web.forms.action_forms import ActionForm
 
