@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class ActionCategory(models.Model):
 	name = models.CharField(max_length=255) #we don't want to limit ourselves here, we'll rather do this in GUI
@@ -21,5 +22,13 @@ class Action(models.Model):
 
 	def __unicode__ (self):
 		return '%s' % (self.title)
+
+#za userja
+class UserProfile(models.Model):
+	user = models.ForeignKey(User, unique=True)
+	user_bio = models.TextField(max_length=1024) #1024 characters = 1 byte
+	avatar_url = models.CharField(max_length=255)
+
+
 
 

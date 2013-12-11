@@ -99,6 +99,8 @@ INSTALLED_APPS = (
     'crispy_forms',
 )
 
+AUTH_PROFILE_MODULE = 'api.UserProfile'
+
 #############################################################################
 # Django debug toolbar settings
 #############################################################################
