@@ -7,7 +7,7 @@
     {% if user.is_authenticated %}
         <ul>
         {% for action in actions %}
-        <li><a href="/action/{{action.id}}">{{action.title}}</a></li>
+        <li><a href="{% url "web.view_action" action.id %}">{{action.title}}</a></li>
         {% endfor %}
         </ul>
     {% else %}

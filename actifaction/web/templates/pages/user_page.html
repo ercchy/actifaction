@@ -1,36 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <div class="container">
+	<div class="container">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-   		<div class="media">
-  		<a class="pull-left" href="#">
-        <img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 100px; height: 100px;"></img>
-  			</a>
-  			<div class="media-body">
-    		<h2 class="media-heading">{% if user.first_name or user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else%} &lt;no name&gt; {% endif %}</h2>
-  			</div>
-        <p>Bio je lahko malo daljši ali kot seznam?</p>
+		<!-- Main component for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<div class="media">
+				<a class="pull-left" href="#">
+					<img class="img-thumbnail" alt="username" src="http://placehold.it/100x100" />
+				</a>
+
+				<div class="media-body">
+					<h2 class="media-heading">
+						{% if user.first_name or user.last_name %}
+							{{ user.first_name }} {{ user.last_name }}
+						{% else %}
+							{{ user.username }}
+						{% endif %}</h2>
+				</div>
+				<p>Bio je lahko malo daljši ali kot seznam?</p>
+			</div>
 		</div>
-		
-        
-     
-      </div>
+	</div>
 
-    </div> <!-- /container -->
+	<div class="container">
+		<ul class="nav nav-justified">
+			<li class="active"><a href="#">Moji dogodki</a></li>
+			<li><a href="#">Udeležiš se</a></li>
+			<li><a href="#">Pretekli dogodki</a></li>
+		</ul>
+	</div>
+	<div class="container">
 
-
-
-
-<div class="container">
-<ul class="nav nav-justified">
-          <li class="active"><a href="#">Moji dogodki</a></li>
-          <li><a href="#">Udeležiš se</a></li>
-          <li><a href="#">Pretekli dogodki</a></li>
-        </ul>
-</div>
-<div class="container">
-  
 {% endblock %}
