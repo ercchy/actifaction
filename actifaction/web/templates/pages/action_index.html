@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+	<h1>Vse aktivnosti</h1>
+
+<!-- ce je user prijavljen bo runnal to spodi, ce ne pa od else dalje-->
+    {% if user.is_authenticated %}
+
+
+
+        <div class="row">
+
+        {% for action in actions %}
+        <div class="col-md-4 aktivnost">
+
+        <h4><a href="{% url "web.view_action" action.id %}">{{action.title}}</a></h4>
+            <div class="ikona">
+
+            </div>
+            <div class="vsebina">
+                {{action.action_date}}
+                {{action.location}}
+                {{action.action_type}}
+            </div>
+
+            <div class="toolbar"><a class ="btn btn-default" href="/action/{{action.id}}/"> View Event</a>
+            </div>
+
+        </div>
+        {% endfor %}
+</div>
+
+
+    {% else %}
+        <p>Za pregled aktivnosti morate biti prijavljeni. Sorči.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

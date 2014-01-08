@@ -2,6 +2,7 @@
 {% block content %}
 
 <div class="container">
+<<<<<<< .merge_file_a12212
 	<h1>Ime dogodka {{ Action.title }}</h1>
 
   <div class="row">
@@ -32,15 +33,55 @@
       <b>Organizator:</b>
       <br>
       <a class="organizer" href="url(r'^user/(?P<user_id>\d+)/$', 'user_page', name='web.user_page')"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+=======
+	<h1>{{ action.title }}</h1>
+
+  <div class="row">
+    <div class="col-sm-6">
+	   <p> <b>Opis:</b> {{ action.description }}</p>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-6">
+      <b>Čas:</b> {{ action.action_date }} <br>
+      <b>Kraj:</b> {{ action.location }}<br>
+    </div>
+</div>
+  <div class="row">
+    <div class="col-sm-6">
+      <b>Tip:</b> {{ action.action_type }}
+    </div>
+</div>
+    <div class="row">
+    <div class="col-sm-6">
+      <form action ="input" action="#" method="post"><button class="btn btn-default" type="button"> Prijavi se </button></form>
+    </div>
+    </div>
+
+      <div class="row" style="margin-top: 30px;">
+    <div class="col-sm-4">
+      <b>Organizator:</b>
+      <br>
+      <a class="organizer" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+>>>>>>> .merge_file_a15440
     </div>
     
     <div class="col-sm-6">
       <b>Udeleženci:</b>
       <br>
+<<<<<<< .merge_file_a12212
       <a class="attendees" href="url(r'^user/(?P<user_id>\d+)/$', 'user_page', name='web.user_page')"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
     </div>
   <br>
 	</p>
+=======
+      <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+        <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
+    </div>
+>>>>>>> .merge_file_a15440
   </div>
 </div>
 
