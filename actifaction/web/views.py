@@ -61,7 +61,9 @@ def submit_action(request):
 @login_required
 def user_page(request, user):
 	user_profile = get_object_or_404(User, pk=user)
+	all_actions = Action.objects.filter(organizer=user)
 	return render(request, 'pages/user_page.html', {'user': user_profile})
+
 
 
 def join_action(request):
