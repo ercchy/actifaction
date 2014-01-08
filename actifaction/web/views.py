@@ -24,8 +24,20 @@ def index(request):
 		context_instance=RequestContext(request))
 
 def user_register(request):
-	register_form = RegisterForm()
-	context = {"form": register_form}
+	form = RegisterForm()
+
+	if request.method == 'POST':
+		form = RegisterForm(request.POST)
+
+	if form.is_valid():
+		user = User.objects.create_user(
+			username=form.cleaned_data['email'],
+			email=form.cleaned_data['email'],
+			password=form.cleaned_data['password']
+		)
+
+
+	context = {'form': form}
 	return render_to_response("registration/register_user.html", context, context_instance=RequestContext(request))
 
 
