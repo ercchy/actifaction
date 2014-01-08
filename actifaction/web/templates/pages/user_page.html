@@ -3,6 +3,7 @@
 
 	<div class="container">
 
+		{{ user }}
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="media">
@@ -31,5 +32,26 @@
 		</ul>
 	</div>
 	<div class="container">
+
+        {% for action in actions %}
+        <div class="col-md-4 aktivnost">
+
+        <h4><a href="{% url "web.view_action" action.id %}">{{action.title}}</a></h4>
+            <div class="ikona">
+
+            </div>
+            <div class="vsebina">
+                {{action.action_date}}
+                {{action.location}}
+                {{action.action_type}}
+            </div>
+
+            <div class="toolbar"><a class ="btn btn-default" href="/action/{{action.id}}/"> View Event</a>
+            </div>
+
+        </div>
+        {% endfor %}
+</div>
+
 
 {% endblock %}
