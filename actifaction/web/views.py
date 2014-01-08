@@ -14,9 +14,9 @@ def main_page(request):
 
 
 def index(request):
+	all_actions = Action.objects.all()
 	context = {
-		'test': 'value',
-		'kdojecar': 'hana'
+		'actions': all_actions
 	}
 	return render_to_response(
 		'pages/index.html',
@@ -27,8 +27,6 @@ def user_register(request):
 	register_form = RegisterForm()
 	context = {"form": register_form}
 	return render_to_response("registration/register_user.html", context, context_instance=RequestContext(request))
-
-
 
 
 def view_all_actions(request):
