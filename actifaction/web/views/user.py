@@ -33,7 +33,7 @@ def register_user(request):
 			if user is not None:
 				if user.is_active:
 					login(request, user)
-					return HttpResponseRedirect(reverse('user_page', args=[user.pk]))
+					return HttpResponseRedirect(reverse('profile', args=[user.pk]))
 
 		except UserAlreadyExistsError:
 			messages.error(request, 'Uporabnik s tem emailom ze obstaja')
@@ -46,7 +46,7 @@ def register_user(request):
 
 
 @login_required
-def user_page(request, user_id):
+def profile(request, user_id):
 	user = get_user(user_id)
 	all_actions = Action.objects.filter(organizer=user)
 	user_profile = get_user_profile(user_id)
@@ -60,7 +60,7 @@ def user_page(request, user_id):
 
 
 @login_required
-def user_profile(request, user_id):
+def edit_profile(request, user_id):
 	profile = get_user_profile(user_id)
 	if profile:
 		form = UserProfileForm(initial=profile.__dict__)
