@@ -5,6 +5,7 @@
 
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="jumbotron">
+			<a href="{% url 'user_profile' user.pk %}">Edit</a>
 			<div class="media">
 				<a class="pull-left" href="#">
 					<img class="img-thumbnail" alt="username" src="http://placehold.it/100x100" />
@@ -18,7 +19,7 @@
 							{{ user.username }}
 						{% endif %}</h2>
 				</div>
-				<p>Bio je lahko malo daljši ali kot seznam?</p>
+				<p>{{ user.user_bio }}</p>
 			</div>
 		</div>
 	</div>
