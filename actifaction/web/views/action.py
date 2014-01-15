@@ -1,12 +1,10 @@
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
-from django.shortcuts import render
+
 from api.models import Action
 from web.forms.action_forms import ActionForm
-from web.forms.login_form import RegisterForm
 
 
 def main_page(request):
@@ -22,25 +20,6 @@ def index(request):
 		'pages/index.html',
 		context,
 		context_instance=RequestContext(request))
-
-def user_register(request):
-	form = RegisterForm()
-
-	if request.method == 'POST':
-		form = RegisterForm(request.POST)
-
-	if form.is_valid():
-		user = User.objects.create_user(
-			username=form.cleaned_data['email'],
-			email=form.cleaned_data['email'],
-			password=form.cleaned_data['password']
-		)
-
-
-	context = {'form': form}
-	return render_to_response("registration/register_user.html", context, context_instance=RequestContext(request))
-
-
 
 
 def view_all_actions(request):
@@ -68,12 +47,6 @@ def edit_action(request):
 
 def submit_action(request):
 	pass
-
-
-@login_required
-def user_page(request, user):
-	user_profile = get_object_or_404(User, pk=user)
-	return render(request, 'pages/user_page.html', {'user': user_profile})
 
 
 def join_action(request):
