@@ -1,1 +1,64 @@
-[{"pk": 1, "model": "api.action", "fields": {"max_people": 10, "description": "Zberemo se v Tivoliju", "title": "Pohod na Ro\u017enik", "creation_date": "2013-12-04", "action_date": "2013-12-11T22:00:00Z", "location": "\u0160marna gora", "action_type": 1}}, {"pk": 2, "model": "api.action", "fields": {"max_people": 5, "description": "U\u010dili se bomo osnov \u0161trikanja.", "title": "U\u010denje \u0161trikanja", "creation_date": "2013-12-04", "action_date": "2013-12-08T01:30:00Z", "location": "Celov\u0161ka", "action_type": 2}}, {"pk": 3, "model": "api.action", "fields": {"max_people": null, "description": "Pridite na \u0161ahovski maraton. Tekmovanje bo na izpadanje. Zadnji lahko gre prvi domov.", "title": "\u0160ahovski maraton", "creation_date": "2013-12-04", "action_date": "2013-12-08T16:00:00Z", "location": "Dunajska 333", "action_type": 3}}, {"pk": 1, "model": "api.actioncategory", "fields": {"description": "Razli\u010dne \u0161portne aktivnosti", "name": "\u0160portne aktivnosti", "slug": "sport"}}, {"pk": 2, "model": "api.actioncategory", "fields": {"description": "Kva\u010dkanje, \u0161trikanje, vezenje, \u0161ivanje", "name": "Ro\u010dna dela", "slug": "rocnadela"}}, {"pk": 3, "model": "api.actioncategory", "fields": {"description": "Druge aktivnosti", "name": "Drugo", "slug": "drugo"}}]
+[{
+    "pk": 1,
+    "model": "api.action",
+    "fields": {
+        "max_people": 10,
+        "description": "Zberemo se v Tivoliju",
+        "title": "Pohod na Ro\u017enik",
+        "creation_date": "2013-12-04",
+        "action_date": "2013-12-11T22:00:00Z",
+        "location": "\u0160marna gora",
+        "action_type": 1,
+        "organizer":1
+    }
+}, {
+    "pk": 2,
+    "model": "api.action",
+    "fields": {
+        "max_people": 5,
+        "description": "U\u010dili se bomo osnov \u0161trikanja.",
+        "title": "U\u010denje \u0161trikanja",
+        "creation_date": "2013-12-04",
+        "action_date": "2013-12-08T01:30:00Z",
+        "location": "Celov\u0161ka",
+        "action_type": 2,
+        "organizer":1
+    }
+}, {
+    "pk": 3,
+    "model": "api.action",
+    "fields": {
+        "max_people": null,
+        "description": "Pridite na \u0161ahovski maraton. Tekmovanje bo na izpadanje. Zadnji lahko gre prvi domov.",
+        "title": "\u0160ahovski maraton",
+        "creation_date": "2013-12-04",
+        "action_date": "2013-12-08T16:00:00Z",
+        "location": "Dunajska 333",
+        "action_type": 3,
+        "organizer":1
+    }
+}, {
+    "pk": 1,
+    "model": "api.actioncategory",
+    "fields": {
+        "description": "Razli\u010dne \u0161portne aktivnosti",
+        "name": "\u0160portne aktivnosti",
+        "slug": "sport"
+    }
+}, {
+    "pk": 2,
+    "model": "api.actioncategory",
+    "fields": {
+        "description": "Kva\u010dkanje, \u0161trikanje, vezenje, \u0161ivanje",
+        "name": "Ro\u010dna dela",
+        "slug": "rocnadela"
+    }
+}, {
+    "pk": 3,
+    "model": "api.actioncategory",
+    "fields": {
+        "description": "Druge aktivnosti",
+        "name": "Drugo",
+        "slug": "drugo"
+    }
+}]

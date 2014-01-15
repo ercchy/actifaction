@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from api.models import UserProfile
+from api.models import UserProfile, Action
 
 from web.forms.user_forms import UserCreateForm, UserProfileForm
 from web.forms.user_forms import UserAlreadyExistsError
@@ -48,11 +48,13 @@ def register_user(request):
 @login_required
 def user_page(request, user_id):
 	user = get_user(user_id)
-	user_profile = {}#UserProfile.objects.get(user=user)
+	all_actions = Action.objects.filter(organizer=user)
+	user_profile = {}
 	return render_to_response(
 		'pages/user_page.html', {
 		'user': user,
-		'user_profile': user_profile
+		'user_profile': user_profile,
+		'actions': all_actions,
 		},
 		context_instance=RequestContext(request))
 

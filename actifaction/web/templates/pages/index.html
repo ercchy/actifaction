@@ -1,23 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="jumbotron">
+        
+          {% if user.is_authenticated %}
+          <h1> Živjo, {{ user.username }} </h1>
+          <br>
+          <a class="btn btn-lg btn-primary" href="/actions" role="button">Kaj se dogaja? »</a>
+        </p>
+        {% else %} 
         <h1>Action + Satisfaction = Actifaction</h1>
         <p>Bodimo aktivni v svojem druženju.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="/actions" role="button">Kaj se dogaja? »</a>
+        <p><a class="btn btn-lg btn-primary" href="accounts/register" role="button">Registriraj se »</a>
+        {% endif %}
         </p>
 </div>
 
-<div class="container">
-<p>
-    Catnipsum dolor sit amet chartreux fur sam catnipsum felix curl up in a blanket cheshire sleep on the sofa. Sleep on the sofa raining cats and dogs chase meew pussy catnip mew look what the cat dragged in. Look what the cat dragged in catnip chartreux catnipsum persian squeaking mice miaowmiaow. Smokey stretching under her chair patch. Licking catnip tigger catnipsum soft fur catnap. Daisy warm kitty a cat may look at a king jump cat and mouse act misty. Persian tonkinese pussy cat, pussy cat pussy cat, pussy cat catnip lucy a cat may look at a king catnip precious. Catnipsum cool cat charlie catnipsum purr hisss catnipsum.
-</p>
-<p>
-Mreoaw sam fur ball climb the curtain purrfection catnipsum miaowmiaow daisy squeaking mice. Catnip fat cat jump catnipsum chase balls of string catnip cuddle me. Mrooww kitty-litter bobtail there's a kitten on my head a cat may look at a king cat and mouse act fluffy. Jingle-bells licking precious longhair climbing climbing catnip. Cat-eyes gizmo taz squeaking mice purr purr purr pussy cat, pussy cat. I don't believe we just have two scratching post cat in a hat tail abyssinian. Boots curl up in a blanket purr catnip garfield milo happy kitty. Catnip twitchy ears tabby hisss garfield toy abyssinian tonkinese. Cuddle me sniffing rawwww catnip mrooww pussy oliver.
-</p>
-<p>
-Hair ball california spangled cat sunbathe sylvester i smell a rat puss sylvester feed me rolling. Catnip pussy chartreux abyssinian miioo-oo-oo. Catnip twitchy ears cat-eyes cat got your tounge miaowmiaow precious cat amongst the pigeons claws. Rolly max abyssinian rolling siamese oreo chartreux catnip. Smokey feathers long thin tail kitty catwalk meaaaawww. Let the cat out of the bag chase oreo hisss leap. Cool cat mmeww kurilian bobtail catnip string calico mmmeoww catnappers. Curl up in a blanket mreeewww soft fur rrrow-mawww mreoaw misty shiny coat there's a kitten on each shoulder shadow.
-</p>
+{% if user.is_authenticated %}
 
+
+
+        <div class="row">
+
+        {% for action in actions %}
+        <div class="col-md-4 aktivnost">
+
+        <h4><a href="{% url "web.view_action" action.id %}">{{action.title}}</a></h4>
+            <div class="ikona">
+
+            </div>
+            <div class="vsebina">
+                {{action.action_date}}
+                {{action.location}}
+                {{action.action_type}}
+            </div>
+
+            <div class="toolbar"><a class ="btn btn-default" href="/action/{{action.id}}/"> View Event</a>
+            </div>
+
+        </div>
+        {% endfor %}
 </div>
+
+
+    {% else %}
+        <p>Za pregled aktivnosti morate biti prijavljeni. Sorči.</p>
+    {% endif %}
+
 {% endblock %}

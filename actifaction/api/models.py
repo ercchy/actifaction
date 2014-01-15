@@ -20,7 +20,7 @@ class Action(models.Model):
 	action_date = models.DateTimeField()
 	action_type = models.ForeignKey(ActionCategory)
 	max_people = models.IntegerField(null=True,blank=True)
-	#organizer = models.ForeignKey(User)
+	organizer = models.ForeignKey(User)
 
 	def __unicode__(self):
 		return '%s' % self.title

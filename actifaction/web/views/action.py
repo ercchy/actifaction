@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import render_to_response
@@ -5,6 +6,7 @@ from django.shortcuts import get_object_or_404
 
 from api.models import Action
 from web.forms.action_forms import ActionForm
+from web.forms.login_form import RegisterForm
 
 
 def main_page(request):
@@ -12,14 +14,15 @@ def main_page(request):
 
 
 def index(request):
+	all_actions = Action.objects.all()
 	context = {
-		'test': 'value',
-		'kdojecar': 'hana'
+		'actions': all_actions
 	}
 	return render_to_response(
 		'pages/index.html',
 		context,
 		context_instance=RequestContext(request))
+
 
 
 def view_all_actions(request):
