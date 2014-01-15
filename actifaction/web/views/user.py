@@ -61,25 +61,30 @@ def profile(request, user_id):
 
 @login_required
 def edit_profile(request, user_id):
-	profile = get_user_profile(user_id)
-	if profile:
-		form = UserProfileForm(initial=profile.__dict__)
+	current_user = request.user.id
+	if current_user == int(user_id):
+		profile = get_user_profile(user_id)
+		if profile:
+			form = UserProfileForm(initial=profile.__dict__)
+		else:
+			form = UserProfileForm()
+
+		if request.method == 'POST':
+			form = UserProfileForm(request.POST, request.FILES)
+		if form.is_valid():
+			# user profile create or update
+			user_data = {}
+			user_data.update(form.cleaned_data)
+
+			profile = create_or_update_profile(user_id, **user_data)
+			return HttpResponseRedirect(reverse('profile', args=[user_id]))
+
+		return render_to_response('registration/user_profile.html', {
+				'form': form,
+			    'profile': profile,
+			}, context_instance=RequestContext(request))
 	else:
-		form = UserProfileForm()
+		return HttpResponseRedirect("/")
 
-	if request.method == 'POST':
-		form = UserProfileForm(request.POST, request.FILES)
-	if form.is_valid():
-		# user profile create or update
-		user_data = {}
-		user_data.update(form.cleaned_data)
-
-		profile = create_or_update_profile(user_id, **user_data)
-		return HttpResponseRedirect(reverse('profile', args=[user_id]))
-
-	return render_to_response('registration/user_profile.html', {
-		'form': form,
-	    'profile': profile,
-	}, context_instance=RequestContext(request))
 
 
