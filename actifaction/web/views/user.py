@@ -75,6 +75,7 @@ def edit_profile(request, user_id):
 		user_data.update(form.cleaned_data)
 
 		profile = create_or_update_profile(user_id, **user_data)
+		return HttpResponseRedirect(reverse('profile', args=[user_id]))
 
 	return render_to_response('registration/user_profile.html', {
 		'form': form,
