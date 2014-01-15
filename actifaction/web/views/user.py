@@ -15,8 +15,9 @@ from api.models import UserProfile, Action
 from web.forms.user_forms import UserCreateForm, UserProfileForm
 from web.forms.user_forms import UserAlreadyExistsError
 
-from web.processors import get_user, get_user_profile
-from web.processors import create_or_update_profile
+from web.processors.user import get_user, get_user_profile
+from web.processors.user import create_or_update_profile
+
 
 
 def register_user(request):
