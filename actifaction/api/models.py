@@ -1,13 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import model_to_dict
+
 
 class ActionCategory(models.Model):
 	name = models.CharField(max_length=255) #we don't want to limit ourselves here, we'll rather do this in GUI
 	slug = models.CharField(max_length=255)
 	description = models.TextField(max_length=255,blank=True)
 
-	def __unicode__ (self):
-		return '%s' % (self.name)
+	def __unicode__(self):
+		return '%s' % self.name
+
 
 class Action(models.Model):
 	creation_date = models.DateField(auto_now_add = True)
@@ -19,15 +22,17 @@ class Action(models.Model):
 	max_people = models.IntegerField(null=True,blank=True)
 	organizer = models.ForeignKey(User)
 
+	def __unicode__(self):
+		return '%s' % self.title
 
-	def __unicode__ (self):
-		return '%s' % (self.title)
 
-#za userja
 class UserProfile(models.Model):
-	user = models.ForeignKey(User, unique=True)
-	user_bio = models.TextField(max_length=1024) #1024 characters = 1 byte
-	avatar_url = models.CharField(max_length=255)
+	user = models.OneToOneField(User, primary_key=True)
+	user_bio = models.TextField(max_length=1024)
+	avatar = models.ImageField(upload_to='media', default='http://placehold.it/30x30')
+
+	def __unicode__(self):
+		return '%s' % self.user.email
 
 
 

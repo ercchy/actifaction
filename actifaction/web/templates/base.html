@@ -59,7 +59,7 @@
 							<img src="http://placehold.it/30x30" alt="{{ user.username }}" class="img-rounded"><b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="{% url 'web.user_page' user.pk %}"><i class="fa fa-user"></i>Profil</a></li>
+							<li><a href="{% url 'user_page' user.pk %}"><i class="fa fa-user"></i>Profil</a></li>
 							<li class="divider"></li>
 							<li><a href="{% url "logout" %}"><i class="fa fa-sign-out"></i>Odjava</a></li>
 
@@ -79,6 +79,16 @@
 		</div>
 	</div>
 </div>
+{% if messages %}
+	<div class="messages container">
+		{% for message in messages %}
+			<div class="container alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				{{ message }}
+			</div>
+		{% endfor %}
+	</div>
+{% endif %}
 
 
 <div class="container" id="main-content">
