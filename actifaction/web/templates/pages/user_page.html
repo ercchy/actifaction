@@ -3,10 +3,9 @@
 
 	<div class="container">
 
-		{{ user }}
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="jumbotron">
-			<a href="{% url 'user_profile' user.pk %}">Edit</a>
+			<a href="{% url 'user_profile' user_profile.user.pk %}">Edit</a>
 			<div class="media">
 				<a class="pull-left" href="#">
 					<img class="img-thumbnail" alt="username" src="http://placehold.it/100x100" />
@@ -14,13 +13,13 @@
 
 				<div class="media-body">
 					<h2 class="media-heading">
-						{% if user.first_name or user.last_name %}
-							{{ user.first_name }} {{ user.last_name }}
+						{% if user_profile.user.first_name or user_profile.user.last_name %}
+							{{ user_profile.user.first_name }} {{ user_profile.user.last_name }}
 						{% else %}
-							{{ user.username }}
+							{{ user_profile.user.username }}
 						{% endif %}</h2>
 				</div>
-				<p>{{ user.user_bio }}</p>
+				<p>{{ user_profile.user_bio }}</p>
 			</div>
 		</div>
 	</div>
