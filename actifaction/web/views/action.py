@@ -6,7 +6,6 @@ from django.shortcuts import get_object_or_404
 
 from api.models import Action
 from web.forms.action_forms import ActionForm
-from web.forms.login_form import RegisterForm
 
 
 def main_page(request):
