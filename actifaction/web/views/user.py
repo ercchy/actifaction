@@ -62,7 +62,10 @@ def user_page(request, user_id):
 @login_required
 def user_profile(request, user_id):
 	profile = get_user_profile(user_id)
-	form = UserProfileForm(initial=profile.__dict__)
+	if profile:
+		form = UserProfileForm(initial=profile.__dict__)
+	else:
+		form = UserProfileForm()
 
 	if request.method == 'POST':
 		form = UserProfileForm(request.POST, request.FILES)

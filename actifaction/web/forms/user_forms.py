@@ -75,14 +75,14 @@ class UserCreateForm(UserCreationForm):
 
 
 class UserProfileForm(forms.Form):
-	email = forms.EmailField(
+	"""email = forms.EmailField(
 		label = 'Email naslov',
 		required = True,
 		error_messages={
 			'required': 'Vnesite email naslov',
 			'invalid': 'Email naslov ni pravilen'
 		}
-	)
+	)"""
 
 	user_bio = forms.CharField(
 		label = 'Bio',
@@ -91,7 +91,7 @@ class UserProfileForm(forms.Form):
 		widget = forms.Textarea,
 		)
 
-	avatar_url = forms.CharField(
+	avatar = forms.CharField(
 		label='Slika uporabnika',
         required=False,
         widget=forms.FileInput(
@@ -109,9 +109,8 @@ class UserProfileForm(forms.Form):
 		self.helper.form_class = 'form-signin'
 		self.helper.add_layout(Layout(
 			Fieldset(_('Uporabniski profil'),
-			         'email',
 			         'user_bio',
-			         'avatar_url',
+			         'avatar',
 			),
 			ButtonHolder(
 				Submit('submit', _('Dodaj'), css_class='btn btn-lg btn-primary btn-block'),
