@@ -49,7 +49,7 @@ def register_user(request):
 def user_page(request, user_id):
 	user = get_user(user_id)
 	all_actions = Action.objects.filter(organizer=user)
-	user_profile = {}
+	user_profile = get_user_profile(user_id)
 	return render_to_response(
 		'pages/user_page.html', {
 		'user': user,
