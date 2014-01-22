@@ -36,8 +36,9 @@
     <div class="col-sm-6">
       <b>Udeleženci:</b>
       <br>
-      {% for profile in action.profiles %}
-      {{ profile.user }}
+      {% for profile in action.get_attendees_profiles %}
+      {{ profile.user}}
+      <img src="{{MEDIA_URL}}{{ profile.avatar }}"/>
       <!-- <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
         <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
         <a class="attendee" href="#"><img class="img-thumbnail" alt="username" data-src="holder.js/200x200" style="width: 70px; height: 70px;"></img></a>
