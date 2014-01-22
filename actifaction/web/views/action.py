@@ -27,7 +27,7 @@ def index(request):
         context_instance=RequestContext(request))
 
 
-
+@login_required
 def view_all_actions(request):
 	all_actions = Action.objects.all()
 	context = {'actions': all_actions}
@@ -49,25 +49,25 @@ def add_action(request):
     context = {"form": action_form}
     return render_to_response("pages/create_action.html", context, context_instance=RequestContext(request))
 
-
+@login_required
 def view_action(request, action_id):
 	action = get_object_or_404(Action, pk=action_id)
 	organizer = UserProfile.objects.get(user__pk=action.organizer.id)
 	context = {'action': action, 'organizer': organizer}
 	return render_to_response("pages/view_action.html", context, context_instance=RequestContext(request))
 
-
+@login_required
 def edit_action(request):
      #action = get_object_or_404(Action,pk=action_id)
     #context = {'action' : action}
     #return render_to_response("pages/view_action.html", context, context_instance=RequestContext(request))
     pass
 
-
+@login_required
 def submit_action(request):
 	pass
 
-
+@login_required
 def join_action(request):
 	pass
 
