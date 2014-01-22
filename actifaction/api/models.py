@@ -11,6 +11,9 @@ class ActionCategory(models.Model):
 	def __unicode__(self):
 		return '%s' % self.name
 
+	class Meta:
+		verbose_name_plural = "Action categories"
+
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, primary_key=True)
