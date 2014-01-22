@@ -15,8 +15,9 @@ from api.models import UserProfile, Action
 from web.forms.user_forms import UserCreateForm, UserProfileForm
 from web.forms.user_forms import UserAlreadyExistsError
 
-from web.processors import get_user, get_user_profile
-from web.processors import create_or_update_profile
+from web.processors.user import get_user, get_user_profile
+from web.processors.user import create_or_update_profile
+
 
 
 def register_user(request):
@@ -33,7 +34,7 @@ def register_user(request):
 			if user is not None:
 				if user.is_active:
 					login(request, user)
-					return HttpResponseRedirect(reverse('user_page', args=[user.pk]))
+					return HttpResponseRedirect(reverse('profile', args=[user.pk]))
 
 		except UserAlreadyExistsError:
 			messages.error(request, 'Uporabnik s tem emailom ze obstaja')
@@ -46,7 +47,7 @@ def register_user(request):
 
 
 @login_required
-def user_page(request, user_id):
+def profile(request, user_id):
 	user = get_user(user_id)
 	all_actions = Action.objects.filter(organizer=user)
 	user_profile = get_user_profile(user_id)
@@ -60,25 +61,31 @@ def user_page(request, user_id):
 
 
 @login_required
-def user_profile(request, user_id):
-	profile = get_user_profile(user_id)
-	if profile:
-		form = UserProfileForm(initial=profile.__dict__)
+def edit_profile(request, user_id):
+	current_user = request.user.id
+	if current_user == int(user_id):
+		profile = get_user_profile(user_id)
+		if profile:
+			form = UserProfileForm(initial=profile.__dict__)
+		else:
+			form = UserProfileForm()
+
+		if request.method == 'POST':
+			form = UserProfileForm(request.POST, request.FILES)
+		if form.is_valid():
+			# user profile create or update
+			user_data = {}
+			user_data.update(form.cleaned_data)
+
+			profile = create_or_update_profile(user_id, **user_data)
+			return HttpResponseRedirect(reverse('profile', args=[user_id]))
+
+		return render_to_response('registration/user_profile.html', {
+				'form': form,
+			    'profile': profile,
+			}, context_instance=RequestContext(request))
 	else:
-		form = UserProfileForm()
+		return HttpResponseRedirect("/")
 
-	if request.method == 'POST':
-		form = UserProfileForm(request.POST, request.FILES)
-	if form.is_valid():
-		# user profile create or update
-		user_data = {}
-		user_data.update(form.cleaned_data)
-
-		profile = create_or_update_profile(user_id, **user_data)
-
-	return render_to_response('registration/user_profile.html', {
-		'form': form,
-	    'profile': profile,
-	}, context_instance=RequestContext(request))
 
 
