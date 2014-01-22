@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 
-from api.models import Action
+from api.models import Action, UserProfile
 from web.forms.action_forms import ActionForm
 from web.processors.action import create_or_update_action
 from django.http import HttpResponseRedirect
@@ -51,7 +51,8 @@ def add_action(request):
 
 def view_action(request, action_id):
 	action = get_object_or_404(Action, pk=action_id)
-	context = {'action': action}
+	organizer = UserProfile.objects.get(user__pk=action.organizer.id)
+	context = {'action': action, 'organizer': organizer}
 	return render_to_response("pages/view_action.html", context, context_instance=RequestContext(request))
 
 
