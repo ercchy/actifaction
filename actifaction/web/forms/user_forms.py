@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.db import IntegrityError
@@ -108,7 +109,7 @@ class UserProfileForm(forms.Form):
 		self.helper.form_tag = True
 		self.helper.form_class = 'form-signin'
 		self.helper.add_layout(Layout(
-			Fieldset(_('Uporabniski profil'),
+			Fieldset(_(u'Uporabniški profil'),
 			         'user_bio',
 			         'avatar',
 			),
