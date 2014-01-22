@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django.utils.html import strip_tags
+from django.utils.html import  escape
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, ButtonHolder, Submit
 from api.models import Action, ActionCategory
@@ -54,7 +54,7 @@ class ActionForm(forms.Form):
 		min_value=1,
 		widget=forms.widgets.NumberInput(),
 		error_messages = {
-			'invalid': u'Stevilka naj bo pozitivna',
+			'invalid': u'Številka naj bo pozitivna',
 		},
 		)
 
@@ -88,7 +88,7 @@ class ActionForm(forms.Form):
 		form = super(ActionForm, self).is_valid()
 		for f,error in self.errors.iteritems():
 			if f != '__all__':
-				error=strip_tags(str(error))
+				error=escape(str(error))
 				self.fields[f].widget.attrs.update({'class': 'error',})
 		return form
 
