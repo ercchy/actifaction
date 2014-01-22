@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block custom_css %}
+<link rel="stylesheet" type="text/css" href="{% static "css/jquery.datetimepicker.css" %}"/ >
+{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -12,4 +17,30 @@
       </form>
   </div>
 </div>
+	
+	
+{% endblock %}
+
+{% block custom_js %}
+<script src="{% static "js/jquery.datetimepicker.js" %}"></script>
+  <script>
+	$('#id_action_date').datetimepicker({
+	  format:'Y-m-d H:i',
+	  dayOfWeekStart: 1,
+	  lang:'si',
+	  i18n:{
+		  si:{
+		   months:[
+		    'Januar','Februar','Marec','April',
+		    'Maj','Junij','Julij','August',
+		    'September','Oktober','November','December',
+		   ],
+		   dayOfWeek:[
+		    "Ne", "Po", "To", "Sr", 
+		    "Če", "Pe", "So",
+		   ]
+		  }
+		 },
+	});
+  </script>
 {% endblock %}
