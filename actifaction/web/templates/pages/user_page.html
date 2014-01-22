@@ -8,7 +8,7 @@
 			<a href="{% url 'edit_profile' user.pk %}">Edit</a>
 			<div class="media">
 				<a class="pull-left" href="#">
-					<img class="img-thumbnail" alt="username" src="http://placehold.it/100x100" />
+					<img class="img-thumbnail" alt="{{ user.username }}" src="{{MEDIA_URL}}{{ user_profile.avatar }}" title="{{ user_profile.user.first_name }} {{ user_profile.user.last_name }}" style="width: 100px; height: 100px;"/>
 				</a>
 
 				<div class="media-body">
