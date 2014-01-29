@@ -61,23 +61,31 @@ def profile(request, user_id):
 
 @login_required
 def edit_profile(request, user_id):
+
 	profile = get_user_profile(user_id)
+
 	if profile:
-		form = UserProfileForm(initial=profile.__dict__)
+		user_data = profile.__dict__
+		user_data.update(profile.user.__dict__)
+		form = UserProfileForm(initial=user_data)
 	else:
-		form = UserProfileForm()
+		user = get_user(user_id)
+		form = UserProfileForm(initial=user.__dict__)
 
 	if request.method == 'POST':
 		form = UserProfileForm(request.POST, request.FILES)
 	if form.is_valid():
-		# user profile create or update
+
 		user_data = {}
 		user_data.update(form.cleaned_data)
-		print request.FILES.get('avatar')
+
 		if request.FILES.get('avatar'):
 			user_data['avatar'] = request.FILES['avatar']
+		else:
+			del user_data['avatar']
 
-		profile = create_or_update_profile(user_id, **user_data)
+		create_or_update_profile(user_id, **user_data)
+		return HttpResponseRedirect(reverse('profile', args=[user_id]))
 
 	return render_to_response('registration/user_profile.html', {
 		'form': form,
