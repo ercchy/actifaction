@@ -39,7 +39,7 @@ def register_user(request):
 			messages.error(request, 'Uporabnik s tem emailom ze obstaja')
 
 	return render_to_response(
-		'registration/register_user.html', {
+		'user/registration.html', {
 		'form': form,
 		},
 		context_instance=RequestContext(request))
@@ -51,7 +51,7 @@ def profile(request, user_id):
 	all_actions = Action.objects.filter(organizer=user)
 	user_profile = get_user_profile(user_id)
 	return render_to_response(
-		'pages/user_page.html', {
+		'user/profile.html', {
 		'user': user,
 		'user_profile': user_profile,
 		'actions': all_actions,
@@ -87,7 +87,7 @@ def edit_profile(request, user_id):
 		create_or_update_profile(user_id, **user_data)
 		return HttpResponseRedirect(reverse('profile', args=[user_id]))
 
-	return render_to_response('registration/user_profile.html', {
+	return render_to_response('user/profile_edit.html', {
 		'form': form,
 	    'profile': profile,
 	}, context_instance=RequestContext(request))

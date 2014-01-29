@@ -25,7 +25,7 @@ urlpatterns = patterns('',
 urlpatterns += patterns(
 	'',
 	url(r'^accounts/login/$', 'django.contrib.auth.views.login',
-	    {'template_name': 'registration/login.html', 'authentication_form': LoginForm},
+	    {'template_name': 'user/login.html', 'authentication_form': LoginForm},
 	    name='login'),
 	url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',
 	    {'next_page': '/'}, name='logout'),
