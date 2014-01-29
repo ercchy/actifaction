@@ -19,7 +19,6 @@ from web.processors.user import get_user, get_user_profile
 from web.processors.user import create_or_update_profile
 
 
-
 def register_user(request):
 	form = UserCreateForm()
 
@@ -62,30 +61,35 @@ def profile(request, user_id):
 
 @login_required
 def edit_profile(request, user_id):
-	current_user = request.user.id
-	if current_user == int(user_id):
-		profile = get_user_profile(user_id)
-		if profile:
-			form = UserProfileForm(initial=profile.__dict__)
-		else:
-			form = UserProfileForm()
 
-		if request.method == 'POST':
-			form = UserProfileForm(request.POST, request.FILES)
-		if form.is_valid():
-			# user profile create or update
-			user_data = {}
-			user_data.update(form.cleaned_data)
+	profile = get_user_profile(user_id)
 
-			profile = create_or_update_profile(user_id, **user_data)
-			return HttpResponseRedirect(reverse('profile', args=[user_id]))
-
-		return render_to_response('registration/user_profile.html', {
-				'form': form,
-			    'profile': profile,
-			}, context_instance=RequestContext(request))
+	if profile:
+		user_data = profile.__dict__
+		user_data.update(profile.user.__dict__)
+		form = UserProfileForm(initial=user_data)
 	else:
-		return HttpResponseRedirect("/")
+		user = get_user(user_id)
+		form = UserProfileForm(initial=user.__dict__)
 
+	if request.method == 'POST':
+		form = UserProfileForm(request.POST, request.FILES)
+	if form.is_valid():
+
+		user_data = {}
+		user_data.update(form.cleaned_data)
+
+		if request.FILES.get('avatar'):
+			user_data['avatar'] = request.FILES['avatar']
+		else:
+			del user_data['avatar']
+
+		create_or_update_profile(user_id, **user_data)
+		return HttpResponseRedirect(reverse('profile', args=[user_id]))
+
+	return render_to_response('registration/user_profile.html', {
+		'form': form,
+	    'profile': profile,
+	}, context_instance=RequestContext(request))
 
 
